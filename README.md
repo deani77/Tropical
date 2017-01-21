@@ -1,3 +1,3 @@
 # Tropical
-
-Governor profile for Intertive Governor
+Governor profile for Interactive Governor
+Still learning to use Github. Please comments
