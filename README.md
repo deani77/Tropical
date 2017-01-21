@@ -1,5 +1,4 @@
 # Tropical
-Interactive Governor Profile
 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
 /sys/module/cpu_boost/parameters/input_boost_enabled 0
