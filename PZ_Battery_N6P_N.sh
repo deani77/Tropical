@@ -49,15 +49,15 @@ sleep 0.2
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 145000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-echo 85000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 0 768000:175000 960000:185000 1344000:175000 1478000:120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
-echo 119 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
-echo 22000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
+echo 86666 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+echo 0 768000:175000 960000:185000 1344000:155000 1478000:120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+echo 23000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
-echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
-echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
@@ -84,7 +84,7 @@ if test $maxfreq -eq 1958400; then
     echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq     #Core 4 Maximum Frequency = 1958MHz         
     chmod 444 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
-    echo 65 768000:75 960000:80 1248000:99 1440000:97 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads 
+    echo 65 960000:80 1248000:99 1440000:95 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
 elif test $maxfreq -eq 2054400; then
     #Temporarily change permissions to governor files for the BIG cluster to set the maximum frequency to 1958MHz
@@ -94,7 +94,7 @@ elif test $maxfreq -eq 2054400; then
     echo 1958400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq     #Core 4 Maximum Frequency = 1958MHz         
     chmod 444 /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
-    echo 65 768000:75 960000:80 1248000:99 1440000:97 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads 
+    echo 65 960000:80 1248000:99 1440000:95 1824000:99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
 fi
 #Grab Minimum Achievable Frequency for the BIG Cluster
@@ -118,16 +118,16 @@ sleep 0.2
 chmod 644 /sys/devices/system/cpu/cpu4/cpufreq/interactive/*
 #Tweak Interactive Governor
 echo 140000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack
-echo 1248000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
-echo 70000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
+echo 1440000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+echo 66666 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
 echo 32000 960000:85000 1248000:96000 1440000:88000 1632000:80000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
-echo 99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
+echo 100 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
 echo 11000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boost
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/fast_ramp_down
-echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows
+echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load
 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration
@@ -137,7 +137,7 @@ if [ -e "/sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction" ]; 
     echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction
 fi
 sleep 0.2
-#Disable TouchBoost and Enable Input Boost
+#Disable TouchBoost and Input Boost
 echo Disabling TouchBoost
     if [ -e "/sys/module/msm_performance/parameters/touchboost" ]; then
     chmod 644 /sys/module/msm_performance/parameters/touchboost
@@ -146,23 +146,23 @@ else
     echo "*Not supported for your current Kernel*"
 fi
 sleep 0.1
-echo Enabling Input Boost
+echo Disabling Input Boost
     if [ -e "/sys/module/cpu_boost/parameters/input_boost_enabled" ]; then
     chmod 644 /sys/module/cpu_boost/parameters/input_boost_enabled
-    echo 1 > /sys/module/cpu_boost/parameters/input_boost_enabled
+    echo 0 > /sys/module/cpu_boost/parameters/input_boost_enabled
     chmod 644 /sys/module/cpu_boost/parameters/input_boost_freq
-    echo 0:600000 1:0 2:0 3:0 4:480000 5:0 6:0 7:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+    echo 0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0 > /sys/module/cpu_boost/parameters/input_boost_freq
     chmod 644 /sys/module/cpu_boost/parameters/boost_ms
     echo 0 > /sys/module/cpu_boost/parameters/boost_ms
     chmod 644 /sys/module/cpu_boost/parameters/input_boost_ms
-    echo 75 > /sys/module/cpu_boost/parameters/input_boost_ms
+    echo 0 > /sys/module/cpu_boost/parameters/input_boost_ms
 else
     echo "*Not supported for your current Kernel*"
 fi
 sleep 0.1
 #Tweaking Memory Value
 echo Memory Values
-echo 0 > /proc/sys/vm/swappiness
+echo 10 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
 echo 50 > /proc/sys/vm/dirty_background_ratio
